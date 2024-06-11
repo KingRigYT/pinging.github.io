@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ping Counter</title>
+</head>
+<body>
+    <h1>Ping Counter</h1>
+    <p id="ping-count">Loading...</p>
+    <script>
+        async function fetchPingCount() {
+            const response = await fetch('https://your-heroku-app.herokuapp.com/count');
+            const data = await response.json();
+            document.getElementById('ping-count').innerText = `Ping count: ${data.count}`;
+        }
+
+        fetchPingCount();
+
+        // Refresh the count every 5 seconds
+        setInterval(fetchPingCount, 5000);
+    </script>
+</body>
+</html>
